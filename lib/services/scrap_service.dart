@@ -8,6 +8,7 @@ class ScrapService {
   final String baseUrl = 'http://175.106.98.197:3000/scraps';
 
   Future<List<dynamic>> fetchScrapsByUserNickname(BuildContext context) async {
+    print('nickname으로 스크랩목록 검색시작');
     final userProvider = Provider.of<UserProvider>(context, listen: false);
     final String url = '$baseUrl/${userProvider.nickname}';
 
@@ -35,6 +36,20 @@ class ScrapService {
       throw Exception('Failed to load following scraps');
     }
   }
+
+  // GET /users/{id} API를 호출하는 메서드 추가
+  Future<Map<String, dynamic>> fetchUserById(String userId) async {
+    final String url = 'http://175.106.98.197:3000/users/$userId';
+
+    final response = await http.get(Uri.parse(url));
+
+    if (response.statusCode == 200) {
+      return jsonDecode(response.body) as Map<String, dynamic>;
+    } else {
+      throw Exception('Failed to load user data');
+    }
+  }
+
 
 
 }
