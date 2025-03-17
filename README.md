@@ -1,16 +1,57 @@
-# newsqrap
+# 📱 Flutter News Shortform App
 
-A new Flutter project.
+## 📝 프로젝트 개요
+Flutter 기반의 뉴스 숏폼 생성 앱으로, **생성형 AI**를 활용하여 최신 뉴스를 짧고 강렬한 영상 형식으로 제공합니다.
+이 앱은 백엔드(NestJS)와 연결되어 뉴스 스크랩, 기사 요약, OpenAI 연동 등을 처리합니다.
 
-## Getting Started
+## 🚀 주요 기능
+- **사용자 관리**: 회원가입, 로그인, 프로필 관리
+- **뉴스 숏폼 생성**: OpenAI 기반으로 뉴스 요약 및 숏폼 콘텐츠 생성
+- **스크랩 기능**: 사용자가 관심 있는 뉴스를 저장 및 관리
+- **S3 업로드**: 생성된 숏폼을 AWS S3에 업로드하여 저장
+- **백그라운드 작업**: 뉴스 크롤링 및 숏폼 자동 생성 (NestJS Schedule 활용)
 
-This project is a starting point for a Flutter application.
+## 🏗️ 기술 스택
+- **Frontend**: Flutter (Dart)
+- **Backend**: NestJS (TypeScript, Mongoose, MongoDB)
+- **AI Service**: OpenAI API (GPT 기반 요약 생성)
+- **Cloud Storage**: AWS S3
+- **Task Scheduling**: NestJS Schedule Module
 
-A few resources to get you started if this is your first Flutter project:
+## 🔧 프로젝트 설정 및 실행 방법
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 1️⃣ 환경 설정
+```bash
+flutter pub get # 의존성 설치
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 2️⃣ 앱 실행
+```bash
+flutter run
+```
+
+### 3️⃣ 백엔드 서버 실행 (NestJS)
+```bash
+npm install # 의존성 설치
+npm run start # 개발 서버 실행
+```
+
+## 🔗 API 연동 방식
+Flutter 앱은 **NestJS 백엔드 API**와 통신하여 데이터를 주고받습니다.
+
+### 📌 기본 API 엔드포인트
+- **사용자 관리**: `/user/login`, `/user/register`
+- **뉴스 조회**: `/article/latest`, `/article/:id`
+- **숏폼 생성**: `/reels/generate`
+- **스크랩**: `/scrap/add`, `/scrap/list`
+- **파일 업로드**: `/s3/upload`
+
+## 💡 향후 개발 계획
+- **중립적인 뉴스 요약**: RAG로 언론사별 특성 투가
+- **할루시네이션, 가짜뉴스 필터링**: 타 뉴스 크롤링
+
+---
+
+이 문서는 지속적으로 업데이트될 예정입니다.
+궁금한 점이나 제안이 있다면 언제든지 PR 또는 이슈를 등록해주세요! 🙌
+
